@@ -6,19 +6,17 @@ import Footer from '@/components/layout/Footer'
 export const metadata: Metadata = {
   metadataBase: new URL('https://seraphineaishat.com'),
   title: { default: 'Seraphine Aishat — Storyteller & Ghostwriter', template: '%s | Seraphine Aishat' },
-  description: 'Stories that breathe. Words that linger. Seraphine Aishat writes at the intersection of love, identity, and the African everyday.',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    siteName: 'Seraphine Aishat',
-    images: [{ url: '/og-default.jpg', width: 1200, height: 630 }],
-  },
-  twitter: { card: 'summary_large_image', creator: '@seraphineaishat' },
+  description: 'Stories that breathe. Words that linger.',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+      </head>
       <body className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1 pt-16">{children}</main>
