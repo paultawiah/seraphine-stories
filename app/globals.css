@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap');
-
 :root {
   --font-playfair: 'Playfair Display', Georgia, serif;
   --font-lora: 'Lora', Georgia, serif;
@@ -15,74 +13,64 @@
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
-
   body {
-    @apply bg-ivory text-ink font-body;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: #F7F3EE;
+    color: #0D0D0D;
   }
-
   .dark body {
-    @apply bg-ink text-ivory;
-  }
-
-  ::selection {
-    @apply bg-gold/30 text-ink;
-  }
-
-  .dark ::selection {
-    @apply bg-gold/30 text-ivory;
+    background-color: #0D0D0D;
+    color: #F7F3EE;
   }
 }
 
 @layer components {
-  /* Ink divider — the signature decorative element */
   .ink-rule {
-    @apply relative my-12 flex items-center justify-center;
+    position: relative;
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .ink-rule::before {
     content: '';
-    @apply absolute inset-x-0 top-1/2 h-px bg-gradient-to-r from-transparent via-gold/40 to-transparent;
+    position: absolute;
+    inset: 0 0 auto 0;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #C9A96E40, transparent);
   }
   .ink-rule span {
-    @apply relative bg-ivory dark:bg-ink px-4 text-gold font-display text-xl select-none;
+    position: relative;
+    background: #F7F3EE;
+    padding: 0 1rem;
+    color: #C9A96E;
+    font-family: var(--font-playfair);
+    font-size: 1.25rem;
   }
-
-  /* Story card hover state */
+  .dark .ink-rule span {
+    background: #0D0D0D;
+  }
   .story-card {
-    @apply transition-all duration-300 ease-out hover:-translate-y-1;
+    transition: all 0.3s ease-out;
   }
-
-  /* Reading progress bar */
+  .story-card:hover {
+    transform: translateY(-4px);
+  }
+  .eyebrow {
+    font-family: var(--font-inter);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #C9A96E;
+  }
   .reading-progress {
-    @apply fixed top-0 left-0 h-0.5 bg-gradient-to-r from-gold to-gold-dark z-50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(to right, #C9A96E, #A8844A);
+    z-index: 50;
     transition: width 0.1s linear;
   }
-
-  /* Tag pill */
-  .tag-pill {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-ui font-medium tracking-wide uppercase;
-    @apply border border-gold/30 text-gold hover:bg-gold/10 transition-colors duration-200;
-  }
-
-  /* Section eyebrow */
-  .eyebrow {
-    @apply font-ui text-xs font-medium tracking-[0.2em] uppercase text-gold;
-  }
 }
-
-/* Prose article styles */
-.article-body h2 {
-  font-family: var(--font-playfair);
-  font-weight: 700;
-}
-
-.article-body h3 {
-  font-family: var(--font-playfair);
-  font-weight: 600;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { @apply bg-transparent; }
-::-webkit-scrollbar-thumb { @apply bg-gold/30 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-gold/60; }
